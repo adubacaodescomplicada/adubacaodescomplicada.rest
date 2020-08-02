@@ -1,9 +1,9 @@
 spring:
 # BANCO DE DADOS
   datasource:
-    url: jdbc:mysql://localhost/adubacaodescomplicada?reconnect=true
-    username: root
-    password: root
+    url: jdbc:mysql://us-cdbr-east-02.cleardb.com/heroku_c7c45a906fc2b28?reconnect=true
+    username: b248a48758c239
+    password: ef4068cc
     
 # E-MAIL
   mail:
@@ -40,7 +40,7 @@ logging:
 # VALORES PADRAO
 default:
 # BANCO DE DADOS
-  database_schema: adubacaodescomplicada
+  database_schema: heroku_c7c45a906fc2b28
 # E-MAIL
   sender: adubacaodescomplicada@gmail.com
   recipient: adubacaodescomplicada@gmail.com

@@ -6,7 +6,7 @@ spring:
 
 # PERFIL ATIVO
   profiles:
-    active: heroku.prod
+    active: 
 # LOCALIZACAO
   mvc:
     locale: pt_BR
@@ -22,7 +22,7 @@ spring:
         use_sql_comments: true
         format_sql: true
   datasource:
-    url: jdbc:mysql://localhost:3306/adubacaodescomplicada
+    url: jdbc:mysql://localhost:3306/heroku_c7c45a906fc2b28
     username: root
     password: root
     
@@ -48,7 +48,7 @@ logging:
 # VALORES PADRAO
 default:
 # BANCO DE DADOS
-  database_schema: adubacaodescomplicada
+  database_schema: heroku_c7c45a906fc2b28
 # E-MAIL
   sender: adubacaodescomplicada@gmail.com
   recipient: adubacaodescomplicada@gmail.com
