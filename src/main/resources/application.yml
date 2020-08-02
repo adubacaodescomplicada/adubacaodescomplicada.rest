@@ -1,0 +1,54 @@
+spring: 
+
+# APLICACAO
+  application:
+    name: Adubação Descomplicada Servidor
+
+# PERFIL ATIVO
+  profiles:
+    active: heroku.prod
+# LOCALIZACAO
+  mvc:
+    locale: pt_BR
+    locale-resolver: fixed
+
+# BANCO DE DADOS
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    show-sql: true
+    properties:
+      hibernate:
+        show_sql: true
+        use_sql_comments: true
+        format_sql: true
+  datasource:
+    url: jdbc:mysql://localhost:3306/adubacaodescomplicada
+    username: root
+    password: root
+    
+# JSON Serializador
+  jackson:
+    serialization:
+      FAIL_ON_EMPTY_BEANS: false
+
+# LOG
+logging:
+  level:
+    # root: debug
+    com.frazao.lacodeamorrest: trace
+    org.hibernate.SQL: debug
+    org.springframework.web: trace
+    org.springframework.security: trace
+    org.springframework.orm: debug
+    org.springframework.orm.jpa: debug
+    org.springframework.transaction: debug
+    org.springframework.transaction.interceptor: trace
+    org.springframework.jdbc: debug
+    
+# VALORES PADRAO
+default:
+# BANCO DE DADOS
+  database_schema: adubacaodescomplicada
+# E-MAIL
+  sender: adubacaodescomplicada@gmail.com
+  recipient: adubacaodescomplicada@gmail.com
