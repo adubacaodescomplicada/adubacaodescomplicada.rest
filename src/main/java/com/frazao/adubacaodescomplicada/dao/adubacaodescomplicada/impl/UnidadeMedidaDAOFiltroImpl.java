@@ -6,11 +6,16 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import org.springframework.beans.factory.annotation.Value;
+
 import com.frazao.adubacaodescomplicada.dao.adubacaodescomplicada.UnidadeMedidaDAOFiltro;
 import com.frazao.adubacaodescomplicada.modelo.dto.adubacaodescomplicada.UnidadeMedidaFiltroDTO;
 import com.frazao.adubacaodescomplicada.modelo.entidade.adubacaodescomplicada.UnidadeMedida;
 
 public class UnidadeMedidaDAOFiltroImpl implements UnidadeMedidaDAOFiltro {
+
+	@Value("${default.database_schema}")
+	private String databaseSchema;
 
 	@PersistenceContext
 	private EntityManager entityManager;
@@ -21,7 +26,7 @@ public class UnidadeMedidaDAOFiltroImpl implements UnidadeMedidaDAOFiltro {
 
 		final StringBuilder sql = new StringBuilder();
 		sql.append("SELECT em.*").append("\n");
-		sql.append("FROM   adubacaodescomplicada.unidade_medida as em").append("\n");
+		sql.append("FROM   ").append(this.databaseSchema).append(".unidade_medida as em").append("\n");
 		final StringBuilder arg = new StringBuilder();
 		// if (StringUtils.isNotBlank(f.getCpfCnpj())) {
 		// arg.append(adWhere(arg)).append("em.cpf_cnpj = :cpfCnpj").append("\n");

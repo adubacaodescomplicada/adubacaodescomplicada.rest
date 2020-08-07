@@ -14,7 +14,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Entity(name = "OauthClientDetails")
-@Table(schema = "adubacaodescomplicada", name = "oauth_client_details")
+@Table(name = "oauth_client_details")
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)

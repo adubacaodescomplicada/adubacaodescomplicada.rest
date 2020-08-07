@@ -1,40 +1,30 @@
 package com.frazao.adubacaodescomplicada.modelo.entidade.adubacaodescomplicada;
 
-import java.math.BigDecimal;
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
+import com.frazao.adubacaodescomplicada.modelo.dominio.Confirmacao;
 import com.frazao.adubacaodescomplicada.modelo.entidade.EntidadeBaseTemId;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-@Entity(name = "UnidadeMedida")
-@Table(name = "unidade_medida")
+@Entity(name = "Cultura")
+@Table(name = "cultura")
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 
-public class UnidadeMedida extends EntidadeBaseTemId<Integer> {
+public class Cultura extends EntidadeBaseTemId<Integer> {
 
 	private static final long serialVersionUID = 1L;
-
-	@Column(name = "base")
-	@Enumerated(EnumType.STRING)
-	private com.frazao.adubacaodescomplicada.modelo.dominio.Confirmacao base;
 
 	@Column(name = "codigo")
 	private String codigo;
@@ -47,14 +37,30 @@ public class UnidadeMedida extends EntidadeBaseTemId<Integer> {
 	@Column(name = "nome")
 	private String nome;
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "pai_id")
-	private com.frazao.adubacaodescomplicada.modelo.entidade.adubacaodescomplicada.UnidadeMedida paiId;
+	@Column(name = "formacao")
+	@Enumerated(EnumType.STRING)
+	private Confirmacao formacao;
 
-	@Transient
-	private List<UnidadeMedida> unidadeMedidaList;
+	@Column(name = "producao")
+	@Enumerated(EnumType.STRING)
+	private Confirmacao producao;
 
-	@Column(name = "valor_base")
-	private BigDecimal valorBase;
+	@Column(name = "recomendacao")
+	private String recomendacao;
+	
+	@Column(name = "epoca")
+	private String epoca;
+	
+	@Column(name = "tipo_folha")
+	private String tipoFolha;
+	
+	@Column(name = "numero_folha")
+	private String numeroFolha;
+	
+	@Column(name = "armazanamento_envio")
+	private String armazanamentoEnvio;
+	
+	@Column(name = "observacao_coleta")
+	private String observacaoColeta;
 
 }

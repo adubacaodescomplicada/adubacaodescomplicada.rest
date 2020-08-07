@@ -13,7 +13,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Entity(name = "OauthApprovals")
-@Table(schema = "adubacaodescomplicada", name = "oauth_approvals")
+@Table(name = "oauth_approvals")
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)

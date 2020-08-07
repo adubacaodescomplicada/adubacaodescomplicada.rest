@@ -17,7 +17,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Entity(name = "Endereco")
-@Table(schema = "adubacaodescomplicada", name = "endereco")
+@Table(name = "endereco")
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)

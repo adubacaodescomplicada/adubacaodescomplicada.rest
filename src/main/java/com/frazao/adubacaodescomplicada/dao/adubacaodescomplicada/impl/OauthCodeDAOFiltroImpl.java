@@ -6,11 +6,16 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import org.springframework.beans.factory.annotation.Value;
+
 import com.frazao.adubacaodescomplicada.dao.adubacaodescomplicada.OauthCodeDAOFiltro;
 import com.frazao.adubacaodescomplicada.modelo.dto.adubacaodescomplicada.OauthCodeFiltroDTO;
 import com.frazao.adubacaodescomplicada.modelo.entidade.adubacaodescomplicada.OauthCode;
 
 public class OauthCodeDAOFiltroImpl implements OauthCodeDAOFiltro {
+
+	@Value("${default.database_schema}")
+	private String databaseSchema;
 
 	@PersistenceContext
 	private EntityManager entityManager;
@@ -21,7 +26,7 @@ public class OauthCodeDAOFiltroImpl implements OauthCodeDAOFiltro {
 
 		final StringBuilder sql = new StringBuilder();
 		sql.append("SELECT em.*").append("\n");
-		sql.append("FROM   adubacaodescomplicada.oauth_code as em").append("\n");
+		sql.append("FROM   ").append(this.databaseSchema).append(".oauth_code as em").append("\n");
 		final StringBuilder arg = new StringBuilder();
 		// if (StringUtils.isNotBlank(f.getCpfCnpj())) {
 		// arg.append(adWhere(arg)).append("em.cpf_cnpj = :cpfCnpj").append("\n");
