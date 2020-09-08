@@ -11,15 +11,15 @@ import com.frazao.adubacaodescomplicada.modelo.dto.adubacaodescomplicada.AduboTi
 
 @RestController
 @RequestMapping(value = "adubo-tipo")
-public class AduboTipoCRUDREST extends CRUDREST<AduboTipo, java.lang.Integer, AduboTipoFiltroDTO, AduboTipoBO> {
+public class AduboTipoCRUDREST extends CRUDREST<AduboTipo, Integer, AduboTipoFiltroDTO, AduboTipoBO> {
 
-   public AduboTipoCRUDREST(@Autowired AduboTipoBO bo) {
-      super(bo);
-   }
+	public AduboTipoCRUDREST(@Autowired AduboTipoBO bo) {
+		super(bo);
+	}
 
-   public AduboTipoBO getBO() {
-	  return super.getBO();
-   }
+	public AduboTipoBO getBO() {
+		return super.getBO();
+	}
 
 	@Override
 	public AduboTipo prepararForm(AduboTipo modelo) throws Exception {
