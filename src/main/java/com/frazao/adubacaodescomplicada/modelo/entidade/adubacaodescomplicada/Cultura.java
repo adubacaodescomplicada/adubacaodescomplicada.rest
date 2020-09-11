@@ -1,5 +1,7 @@
 package com.frazao.adubacaodescomplicada.modelo.entidade.adubacaodescomplicada;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -7,6 +9,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.frazao.adubacaodescomplicada.modelo.dominio.Confirmacao;
@@ -62,5 +65,15 @@ public class Cultura extends EntidadeBaseTemId<Integer> {
 	
 	@Column(name = "observacao_coleta")
 	private String observacaoColeta;
+	
+	@Column(name = "meta_saturacao_base")
+    private Integer metaSaturacaoBase;
+	
+	@OneToMany(mappedBy = "cultura")
+	private List<CulturaIdadePlantio> culturaIdadePlantioList;
+	
+	public String toString() {
+		return String.format("%d. %s", this.getId(), this.getNome());
+	}
 
 }
