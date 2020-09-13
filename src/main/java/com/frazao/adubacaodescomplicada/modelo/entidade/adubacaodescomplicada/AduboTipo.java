@@ -26,9 +26,6 @@ public class AduboTipo extends EntidadeBaseTemId<Integer> {
 
 	private static final long serialVersionUID = 1L;
 
-	@Transient
-	private List<Adubo> aduboList;
-
 	@Column(name = "codigo")
 	private String codigo;
 

@@ -11,8 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 import com.frazao.adubacaodescomplicada.modelo.entidade.EntidadeBaseTemId;
 
@@ -30,12 +30,12 @@ public class Adubo extends EntidadeBaseTemId<Integer> {
 
 	private static final long serialVersionUID = 1L;
 
-	@Transient
+	@OneToMany(mappedBy = "adubo")
 	private List<AduboGarantia> aduboGarantiaList;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "adubo_tipo_id")
-	private com.frazao.adubacaodescomplicada.modelo.entidade.adubacaodescomplicada.Adubo aduboTipoId;
+	private AduboTipo aduboTipo;
 
 	@Column(name = "codigo")
 	private String codigo;

@@ -42,5 +42,8 @@ public class AnaliseSoloParametro extends EntidadeBaseTemId<Integer> {
 	@JoinColumn(name = "unidade_medida_id")
 	@ManyToOne
 	private UnidadeMedida unidadeMedida;
+	
+	@Column(name = "ordem")
+	private Integer ordem;
 
 }

@@ -71,9 +71,5 @@ public class Cultura extends EntidadeBaseTemId<Integer> {
 	
 	@OneToMany(mappedBy = "cultura")
 	private List<CulturaIdadePlantio> culturaIdadePlantioList;
-	
-	public String toString() {
-		return String.format("%d. %s", this.getId(), this.getNome());
-	}
 
 }
