@@ -17,10 +17,6 @@ public class CulturaCRUDREST extends CRUDREST<Cultura, java.lang.Integer, Cultur
       super(bo);
    }
 
-   public CulturaBO getBO() {
-	  return super.getBO();
-   }
-
 	@Override
 	public Cultura prepararForm(Cultura modelo) throws Exception {
 		return modelo == null ? new Cultura() : modelo;

@@ -71,5 +71,9 @@ public class Cultura extends EntidadeBaseTemId<Integer> {
 	
 	@OneToMany(mappedBy = "cultura")
 	private List<CulturaIdadePlantio> culturaIdadePlantioList;
+	
+	@Column(name= "espacamento_duplo")
+	@Enumerated(EnumType.STRING)
+	private Confirmacao espacamentoDuplo;
 
 }
