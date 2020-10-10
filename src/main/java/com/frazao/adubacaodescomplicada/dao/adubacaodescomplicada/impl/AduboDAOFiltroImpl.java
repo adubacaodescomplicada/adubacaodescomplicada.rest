@@ -44,8 +44,11 @@ public class AduboDAOFiltroImpl implements AduboDAOFiltro {
 		// query.setParameter("tipo", f.getTipo().stream().map(v ->
 		// v.name()).collect(Collectors.toSet()));
 		// }
-		return query.getResultList();
-
+		Collection<Adubo> result = query.getResultList();
+		if (result != null) {
+			result.forEach(e -> e.getAduboGarantiaList().forEach(e1 -> e1.setAdubo(null)));
+		}
+		return result;
 	}
 
 }

@@ -27,23 +27,23 @@ import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 
 @Configuration
 public class Config implements WebMvcConfigurer {
-	
+
 	@Autowired
 	private LocaleChangeInterceptor localeChangeInterceptor;
-	
+
 	@Autowired
 	private ObjectMapper mapper;
-	
+
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
-	    registry.addInterceptor(localeChangeInterceptor);
+		registry.addInterceptor(localeChangeInterceptor);
 	}
-	
+
 	@Override
 	public void addFormatters(FormatterRegistry registry) {
-	    registry.addConverter(new StringToLocalDateConverter());
-	    registry.addConverter(new StringToLocalDateTimeConverter());
-	    registry.addConverter(new StringToBigDecimalConverter());
+		registry.addConverter(new StringToLocalDateConverter());
+		registry.addConverter(new StringToLocalDateTimeConverter());
+		registry.addConverter(new StringToBigDecimalConverter());
 	}
 
 	@PostConstruct
@@ -56,17 +56,17 @@ public class Config implements WebMvcConfigurer {
 
 		this.mapper.configure(MapperFeature.ALLOW_COERCION_OF_SCALARS, true);
 		this.mapper.configure(MapperFeature.SORT_PROPERTIES_ALPHABETICALLY, true);
+		// this.mapper.configure(MapperFeature.PROPAGATE_TRANSIENT_MARKER, true);
 
-		this.mapper.registerModule(
-			    new Hibernate5Module().configure(
-			        Hibernate5Module.Feature.FORCE_LAZY_LOADING, true));
-		
-		
+		this.mapper.registerModule(new Hibernate5Module().configure(Hibernate5Module.Feature.FORCE_LAZY_LOADING, true)
+				.disable(Hibernate5Module.Feature.USE_TRANSIENT_ANNOTATION));
+
 		final SimpleModule module = new SimpleModule();
 
 		module.addDeserializer(LocalDate.class,
 				new LocalDateDeserializer(DateTimeFormatter.ofPattern(FormatConfig.DATE_FORMAT[0])));
-		module.addSerializer(LocalDate.class, new LocalDateSerializer(DateTimeFormatter.ofPattern(FormatConfig.DATE_FORMAT[0])));
+		module.addSerializer(LocalDate.class,
+				new LocalDateSerializer(DateTimeFormatter.ofPattern(FormatConfig.DATE_FORMAT[0])));
 
 		module.addDeserializer(LocalDateTime.class,
 				new LocalDateTimeDeserializer(DateTimeFormatter.ofPattern(FormatConfig.DATETIME_FORMAT[0])));

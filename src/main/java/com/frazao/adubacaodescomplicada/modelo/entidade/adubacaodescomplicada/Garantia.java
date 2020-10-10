@@ -1,5 +1,7 @@
 package com.frazao.adubacaodescomplicada.modelo.entidade.adubacaodescomplicada;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import com.frazao.adubacaodescomplicada.modelo.entidade.EntidadeBaseTemId;
 
@@ -19,7 +22,6 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-
 public class Garantia extends EntidadeBaseTemId<Integer> {
 
 	private static final long serialVersionUID = 1L;
@@ -38,5 +40,8 @@ public class Garantia extends EntidadeBaseTemId<Integer> {
 
 	@Column(name = "nome")
 	private String nome;
+
+	@Transient
+	private List<AduboGarantia> aduboGarantiaList;
 
 }

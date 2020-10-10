@@ -7,49 +7,35 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.frazao.adubacaodescomplicada.modelo.entidade.EntidadeBaseTemId;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
-@Entity(name = "AduboGarantia")
-@Table(name = "adubo_garantia")
+@Entity(name = "FonteMateriaOrganica")
+@Table(name = "fonte_materia_organica")
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-
-public class AduboGarantia extends EntidadeBaseTemId<Integer> {
+public class FonteMateriaOrganica extends EntidadeBaseTemId<Integer> {
 
 	private static final long serialVersionUID = 1L;
-
-	@ManyToOne
-	@JoinColumn(name = "adubo_id")
-	private Adubo adubo;
-
-	@ManyToOne
-	@JoinColumn(name = "garantia_id")
-	private Garantia garantia;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
 	private Integer id;
 
-	@Column(name = "valor")
-	private BigDecimal valor;
-	
-	@Column(name = "descricao")
-	private String descricao;
-	
-	public String toString() {
-		return this.getId().toString();
-	}
+	@Column(name = "codigo")
+	private String codigo;
+
+	@Column(name = "nome")
+	private String nome;
+
+	@Column(name = "quantidade_quilo_cova")
+	private BigDecimal quantidadeQuiloCova;
 
 }
