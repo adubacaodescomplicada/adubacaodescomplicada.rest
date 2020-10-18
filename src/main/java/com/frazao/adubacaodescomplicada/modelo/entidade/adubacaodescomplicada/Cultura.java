@@ -75,5 +75,8 @@ public class Cultura extends EntidadeBaseTemId<Integer> {
 	@Column(name= "espacamento_duplo")
 	@Enumerated(EnumType.STRING)
 	private Confirmacao espacamentoDuplo;
+	
+	@Column(name = "unidade_produtividade")
+    private String unidadeProdutividade;
 
 }

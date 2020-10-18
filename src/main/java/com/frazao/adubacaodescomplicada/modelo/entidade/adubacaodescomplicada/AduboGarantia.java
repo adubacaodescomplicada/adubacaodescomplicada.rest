@@ -11,13 +11,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.frazao.adubacaodescomplicada.modelo.entidade.EntidadeBaseTemId;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 @Entity(name = "AduboGarantia")
 @Table(name = "adubo_garantia")
@@ -45,8 +43,8 @@ public class AduboGarantia extends EntidadeBaseTemId<Integer> {
 	@Column(name = "valor")
 	private BigDecimal valor;
 	
-	@Column(name = "descricao")
-	private String descricao;
+//	@Column(name = "descricao")
+//	private String descricao;
 	
 	public String toString() {
 		return this.getId().toString();
