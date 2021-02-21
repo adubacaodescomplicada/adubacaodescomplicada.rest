@@ -37,5 +37,9 @@ public class FonteMateriaOrganica extends EntidadeBaseTemId<Integer> {
 
 	@Column(name = "quantidade_quilo_cova")
 	private BigDecimal quantidadeQuiloCova;
+	
+	public FonteMateriaOrganica(Integer id) {
+		super(id);
+	}
 
 }

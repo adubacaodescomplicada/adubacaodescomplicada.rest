@@ -39,4 +39,8 @@ public class PessoaEndereco extends EntidadeBaseTemId<Integer> {
 	@JoinColumn(name = "pessoa_id")
 	private com.frazao.adubacaodescomplicada.modelo.entidade.adubacaodescomplicada.PessoaEndereco pessoaId;
 
+	public PessoaEndereco(Integer id) {
+		super(id);
+	}
+
 }

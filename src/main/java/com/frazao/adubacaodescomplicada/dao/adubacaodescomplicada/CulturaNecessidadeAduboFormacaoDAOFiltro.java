@@ -1,0 +1,10 @@
+package com.frazao.adubacaodescomplicada.dao.adubacaodescomplicada;
+
+import com.frazao.adubacaodescomplicada.dao.Filtro;
+import com.frazao.adubacaodescomplicada.modelo.dto.adubacaodescomplicada.CulturaNecessidadeAduboFormacaoFiltroDTO;
+import com.frazao.adubacaodescomplicada.modelo.entidade.adubacaodescomplicada.CulturaNecessidadeAduboFormacao;
+
+public interface CulturaNecessidadeAduboFormacaoDAOFiltro
+		extends Filtro<CulturaNecessidadeAduboFormacao, CulturaNecessidadeAduboFormacaoFiltroDTO> {
+
+}

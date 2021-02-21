@@ -1,5 +1,6 @@
 package com.frazao.adubacaodescomplicada.modelo.entidade.adubacaodescomplicada;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -13,6 +14,7 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import com.frazao.adubacaodescomplicada.modelo.entidade.EntidadeBaseTemId;
 
@@ -31,7 +33,11 @@ public class Adubo extends EntidadeBaseTemId<Integer> {
 	private static final long serialVersionUID = 1L;
 
 	@OneToMany(mappedBy = "adubo")
-	private List<AduboGarantia> aduboGarantiaList;
+	private List<AduboGarantia> aduboGarantiaList = new ArrayList<>();
+
+//	@OneToMany(mappedBy = "adubo")
+	@Transient
+	private List<AduboPreco> aduboPrecoList = new ArrayList<>();
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "adubo_tipo_id")
@@ -51,5 +57,9 @@ public class Adubo extends EntidadeBaseTemId<Integer> {
 
 	@Column(name = "nome")
 	private String nome;
+
+	public Adubo(Integer id) {
+		super(id);
+	}
 
 }

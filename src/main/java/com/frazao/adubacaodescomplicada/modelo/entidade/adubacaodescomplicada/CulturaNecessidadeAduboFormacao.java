@@ -1,7 +1,6 @@
 package com.frazao.adubacaodescomplicada.modelo.entidade.adubacaodescomplicada;
 
 import java.math.BigDecimal;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,51 +13,50 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
-import com.frazao.adubacaodescomplicada.modelo.dominio.Confirmacao;
+import com.frazao.adubacaodescomplicada.modelo.dominio.adubacaodescomplicada.ClassificacaoNecessidadeAdubo;
 import com.frazao.adubacaodescomplicada.modelo.entidade.EntidadeBaseTemId;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-@Entity(name = "UnidadeMedida")
-@Table(name = "unidade_medida")
+@Entity(name = "CulturaNecessidadeAduboFormacao")
+@Table(schema = "heroku_c7c45a906fc2b28", name = "cultura_necessidade_adubo_formacao")
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-public class UnidadeMedida extends EntidadeBaseTemId<Integer> {
+public class CulturaNecessidadeAduboFormacao extends EntidadeBaseTemId<Integer> {
 
 	private static final long serialVersionUID = 1L;
-
-	@Column(name = "base")
-	@Enumerated(EnumType.STRING)
-	private Confirmacao base;
-
-	@Column(name = "codigo")
-	private String codigo;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
 	private Integer id;
 
-	@Column(name = "nome")
-	private String nome;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "cultura_id")
+	private Cultura cultura;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "pai_id")
-	private UnidadeMedida paiId;
+	@JoinColumn(name = "cultura_idade_plantio_id")
+	private CulturaIdadePlantio culturaIdadePlantio;
 
-	@Transient
-	private List<UnidadeMedida> unidadeMedidaList;
+	@Column(name = "nitrogenio")
+	private BigDecimal nitrogenio;
 
-	@Column(name = "valor_base")
-	private BigDecimal valorBase;
+	@Column(name = "classificacao")
+	@Enumerated(EnumType.STRING)
+	private ClassificacaoNecessidadeAdubo classificacao;
+
+	@Column(name = "fosforo")
+	private BigDecimal fosforo;
+
+	@Column(name = "potassio")
+	private BigDecimal potassio;
 	
-	public UnidadeMedida(Integer id) {
+	public CulturaNecessidadeAduboFormacao(Integer id) {
 		super(id);
 	}
-
 }

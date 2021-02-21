@@ -1,14 +1,11 @@
 package com.frazao.adubacaodescomplicada.modelo.entidade.adubacaodescomplicada;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 import com.frazao.adubacaodescomplicada.modelo.entidade.EntidadeBaseTemId;
 
@@ -36,5 +33,9 @@ public class AduboTipo extends EntidadeBaseTemId<Integer> {
 
 	@Column(name = "nome")
 	private String nome;
+	
+	public AduboTipo(Integer id) {
+		super(id);
+	}
 
 }

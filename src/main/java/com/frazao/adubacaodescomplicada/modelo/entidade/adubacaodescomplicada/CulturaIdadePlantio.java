@@ -46,5 +46,9 @@ public class CulturaIdadePlantio extends EntidadeBaseTemId<Integer> {
 	@ManyToOne
 	@JsonIgnore
 	private Cultura cultura;
+	
+	public CulturaIdadePlantio(Integer id) {
+		super(id);
+	}
 
 }

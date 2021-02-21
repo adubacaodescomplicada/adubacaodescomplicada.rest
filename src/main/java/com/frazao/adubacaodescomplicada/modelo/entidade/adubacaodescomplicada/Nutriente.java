@@ -21,22 +21,24 @@ import lombok.NoArgsConstructor;
 
 public class Nutriente extends EntidadeBaseTemId<Integer> {
 
-   private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id")
+	private Integer id;
 
-@Id
-@GeneratedValue(strategy = GenerationType.AUTO)
-@Column(name = "id") private Integer id;
+	@Column(name = "nome")
+	private String nome;
 
+	@Column(name = "codigo")
+	private String codigo;
 
-@Column(name = "nome") private String nome;
+	@Column(name = "sigla")
+	private String sigla;
 
-
-@Column(name = "codigo") private String codigo;
-
-
-@Column(name = "sigla") private String sigla;
-
-
+	public Nutriente(Integer id) {
+		super(id);
+	}
 
 }

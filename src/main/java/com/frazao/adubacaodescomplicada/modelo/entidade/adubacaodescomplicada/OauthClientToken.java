@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Table;
 
-import com.frazao.adubacaodescomplicada.modelo.entidade.EntidadeBaseTemId;
+import com.frazao.adubacaodescomplicada.modelo.entidade.EntidadeBase;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 
-public class OauthClientToken extends EntidadeBaseTemId<Integer> {
+public class OauthClientToken extends EntidadeBase {
 
 	private static final long serialVersionUID = 1L;
 
@@ -41,17 +41,5 @@ public class OauthClientToken extends EntidadeBaseTemId<Integer> {
 
 	@Column(name = "user_name")
 	private String userName;
-
-	@Override
-	public Integer getId() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void setId(final Integer id) {
-		// TODO Auto-generated method stub
-
-	}
 
 }

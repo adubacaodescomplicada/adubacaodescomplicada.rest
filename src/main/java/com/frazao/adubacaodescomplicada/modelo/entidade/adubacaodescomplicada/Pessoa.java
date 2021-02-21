@@ -60,5 +60,9 @@ public class Pessoa extends EntidadeBaseTemId<Integer> {
 
 	@Transient
 	private List<Usuario> usuarioList;
+	
+	public Pessoa(Integer id) {
+		super(id);
+	}
 
 }

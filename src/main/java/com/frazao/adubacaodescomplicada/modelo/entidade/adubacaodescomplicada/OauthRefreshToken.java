@@ -6,7 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Table;
 
-import com.frazao.adubacaodescomplicada.modelo.entidade.EntidadeBaseTemId;
+import com.frazao.adubacaodescomplicada.modelo.entidade.EntidadeBase;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -17,8 +17,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-
-public class OauthRefreshToken extends EntidadeBaseTemId<Integer> {
+public class OauthRefreshToken extends EntidadeBase {
 
 	private static final long serialVersionUID = 1L;
 
@@ -33,17 +32,5 @@ public class OauthRefreshToken extends EntidadeBaseTemId<Integer> {
 	@Id
 	@Column(name = "token_id")
 	private String tokenId;
-
-	@Override
-	public Integer getId() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void setId(final Integer id) {
-		// TODO Auto-generated method stub
-
-	}
 
 }

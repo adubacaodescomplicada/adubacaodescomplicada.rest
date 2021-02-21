@@ -11,7 +11,6 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode
-
 public class RecuperarSenhaDTO implements DTO {
 
 	private static final long serialVersionUID = 1L;
@@ -21,6 +20,9 @@ public class RecuperarSenhaDTO implements DTO {
 
 	public RecuperarSenhaDTO(final String email) {
 		this.setEmail(email);
+	}
+
+	public void setEmail(String email) {	
 	}
 
 }

@@ -45,5 +45,9 @@ public class AnaliseSoloParametro extends EntidadeBaseTemId<Integer> {
 	
 	@Column(name = "ordem")
 	private Integer ordem;
+	
+	public AnaliseSoloParametro(Integer id) {
+		super(id);
+	}
 
 }

@@ -13,7 +13,6 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-
 public class AutorizarTrocarSenhaDTO extends RecuperarSenhaDTO implements MensagemEmail {
 
 	private static final long serialVersionUID = 1L;

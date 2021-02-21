@@ -1,5 +1,6 @@
 package com.frazao.adubacaodescomplicada.modelo.entidade.adubacaodescomplicada;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -11,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import com.frazao.adubacaodescomplicada.modelo.dominio.Confirmacao;
 import com.frazao.adubacaodescomplicada.modelo.entidade.EntidadeBaseTemId;
@@ -70,7 +72,7 @@ public class Cultura extends EntidadeBaseTemId<Integer> {
     private Integer metaSaturacaoBase;
 	
 	@OneToMany(mappedBy = "cultura")
-	private List<CulturaIdadePlantio> culturaIdadePlantioList;
+	private List<CulturaIdadePlantio> culturaIdadePlantioList = new ArrayList<>();
 	
 	@Column(name= "espacamento_duplo")
 	@Enumerated(EnumType.STRING)
@@ -78,5 +80,14 @@ public class Cultura extends EntidadeBaseTemId<Integer> {
 	
 	@Column(name = "unidade_produtividade")
     private String unidadeProdutividade;
+	
+	@Transient
+	private List<CulturaNecessidadeAduboFormacao> culturaNecessidadeAduboFormacaoList = new ArrayList<>();
+	
+	@Transient 
+	private List<CulturaNecessidadeAduboProducao> culturaNecessidadeAduboProducaoList = new ArrayList<>();
 
+	public Cultura(Integer id) {
+		super(id);
+	}
 }
