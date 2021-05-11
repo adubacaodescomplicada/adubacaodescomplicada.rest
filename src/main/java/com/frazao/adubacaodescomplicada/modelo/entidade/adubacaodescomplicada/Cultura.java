@@ -31,61 +31,72 @@ public class Cultura extends EntidadeBaseTemId<Integer> {
 
 	private static final long serialVersionUID = 1L;
 
+	@Column(name = "armazanamento_envio")
+	private String armazanamentoEnvio;
+
+	@Column(name = "classificacao")
+	private String classificacao;
+
 	@Column(name = "codigo")
 	private String codigo;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "id")
-	private Integer id;
-
-	@Column(name = "nome")
-	private String nome;
-
-	@Column(name = "formacao")
+	@Column(name = "cultivo_em_solo")
 	@Enumerated(EnumType.STRING)
-	private Confirmacao formacao;
+	private Confirmacao cultivoEmSolo;
 
-	@Column(name = "producao")
+	@Column(name = "cultivo_fora_solo")
 	@Enumerated(EnumType.STRING)
-	private Confirmacao producao;
+	private Confirmacao cultivoForaSolo;
 
-	@Column(name = "recomendacao")
-	private String recomendacao;
-	
-	@Column(name = "epoca")
-	private String epoca;
-	
-	@Column(name = "tipo_folha")
-	private String tipoFolha;
-	
-	@Column(name = "numero_folha")
-	private String numeroFolha;
-	
-	@Column(name = "armazanamento_envio")
-	private String armazanamentoEnvio;
-	
-	@Column(name = "observacao_coleta")
-	private String observacaoColeta;
-	
-	@Column(name = "meta_saturacao_base")
-    private Integer metaSaturacaoBase;
-	
 	@OneToMany(mappedBy = "cultura")
 	private List<CulturaIdadePlantio> culturaIdadePlantioList = new ArrayList<>();
+
+	@Transient
+	private List<CulturaNecessidadeAduboFormacao> culturaNecessidadeAduboFormacaoList = new ArrayList<>();
+
+	@Transient 
+	private List<CulturaNecessidadeAduboProducao> culturaNecessidadeAduboProducaoList = new ArrayList<>();
+
+	@Column(name = "epoca")
+	private String epoca;
 	
 	@Column(name= "espacamento_duplo")
 	@Enumerated(EnumType.STRING)
 	private Confirmacao espacamentoDuplo;
 	
+	@Column(name = "formacao")
+	@Enumerated(EnumType.STRING)
+	private Confirmacao formacao;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id")
+	private Integer id;
+	
+	@Column(name = "meta_saturacao_base")
+    private Integer metaSaturacaoBase;
+	
+	@Column(name = "nome")
+	private String nome;
+	
+	@Column(name = "numero_folha")
+	private String numeroFolha;
+	
+	@Column(name = "observacao_coleta")
+	private String observacaoColeta;
+	
+	@Column(name = "producao")
+	@Enumerated(EnumType.STRING)
+	private Confirmacao producao;
+	
+	@Column(name = "recomendacao")
+	private String recomendacao;
+	
+	@Column(name = "tipo_folha")
+	private String tipoFolha;
+	
 	@Column(name = "unidade_produtividade")
     private String unidadeProdutividade;
-	
-	@Transient
-	private List<CulturaNecessidadeAduboFormacao> culturaNecessidadeAduboFormacaoList = new ArrayList<>();
-	
-	@Transient 
-	private List<CulturaNecessidadeAduboProducao> culturaNecessidadeAduboProducaoList = new ArrayList<>();
 
 	public Cultura(Integer id) {
 		super(id);
