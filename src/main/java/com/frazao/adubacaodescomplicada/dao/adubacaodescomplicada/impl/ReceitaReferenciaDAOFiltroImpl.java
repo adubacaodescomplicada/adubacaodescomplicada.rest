@@ -26,7 +26,7 @@ public class ReceitaReferenciaDAOFiltroImpl implements ReceitaReferenciaDAOFiltr
 
 		final StringBuilder sql = new StringBuilder();
 		sql.append("SELECT em.*").append("\n");
-		sql.append("FROM   ").append(this.databaseSchema).append(".receita_referencia as em").append("\n");
+		sql.append("FROM   ").append(this.databaseSchema).append(".receita_r	eferencia as em").append("\n");
 		final StringBuilder arg = new StringBuilder();
 		// if (StringUtils.isNotBlank(f.getCpfCnpj())) {
 		// arg.append(adWhere(arg)).append("em.cpf_cnpj = :cpfCnpj").append("\n");
