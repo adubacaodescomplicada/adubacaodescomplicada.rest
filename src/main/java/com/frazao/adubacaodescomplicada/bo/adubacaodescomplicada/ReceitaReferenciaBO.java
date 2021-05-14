@@ -39,7 +39,7 @@ public class ReceitaReferenciaBO extends CRUDBO<ReceitaReferencia, java.lang.Int
 //				r.getAdubo().setAduboGarantiaList(null);
 //			});
 //			item.setAduboGarantiaList(aduboGarantiaList);
-			System.out.println(item);
+			System.out.println(item.getId());
 		}
 
 		return result;
