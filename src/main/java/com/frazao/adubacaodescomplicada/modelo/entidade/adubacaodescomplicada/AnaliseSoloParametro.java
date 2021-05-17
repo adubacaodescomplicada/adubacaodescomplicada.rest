@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -39,20 +40,24 @@ public class AnaliseSoloParametro extends EntidadeBaseTemId<Integer> {
 	@Column(name = "nome")
 	private String nome;
 
+	@Column(name = "observacao")
+	@Lob
+	private String observacao;
+
 	@Column(name = "ordem")
 	private Integer ordem;
-	
+
 	@Column(name = "sigla")
 	private String sigla;
-	
+
 	@Column(name = "tem_formula_qualidade_solo")
 	@Enumerated(EnumType.STRING)
 	private Confirmacao temFormulaQualidadeSolo;
-	
+
 	@JoinColumn(name = "unidade_medida_id")
 	@ManyToOne
 	private UnidadeMedida unidadeMedida;
-	
+
 	public AnaliseSoloParametro(Integer id) {
 		super(id);
 	}
