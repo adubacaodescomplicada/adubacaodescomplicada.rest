@@ -1,5 +1,7 @@
 package com.frazao.adubacaodescomplicada.rest.adubacaodescomplicada;
 
+import java.security.Principal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,7 +24,7 @@ public class AduboTipoCRUDREST extends CRUDREST<AduboTipo, Integer, AduboTipoFil
 	}
 
 	@Override
-	public AduboTipo prepararForm(AduboTipo modelo) throws Exception {
+	public AduboTipo prepararForm(AduboTipo modelo, Principal usuario) throws Exception {
 		return modelo == null ? new AduboTipo() : modelo;
 	}
 

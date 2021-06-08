@@ -1,5 +1,7 @@
 package com.frazao.adubacaodescomplicada.bo.adubacaodescomplicada;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +15,11 @@ public class PessoaBO extends CRUDBO<Pessoa, java.lang.Integer, PessoaFiltroDTO,
 
    public PessoaBO(@Autowired PessoaDAO dao) {
       super(Pessoa.class, dao);
+   }
+   
+   @Transactional
+   public void iniciaPrecoAdubo(Pessoa pessoa) {
+	   this.getDAO().iniciaPrecoAdubo(pessoa);
    }
 
 }

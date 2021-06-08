@@ -1,5 +1,7 @@
 package com.frazao.adubacaodescomplicada.rest.adubacaodescomplicada;
 
+import java.security.Principal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,7 +24,7 @@ public class PessoaEnderecoCRUDREST extends CRUDREST<PessoaEndereco, java.lang.I
    }
 
 	@Override
-	public PessoaEndereco prepararForm(PessoaEndereco modelo) throws Exception {
+	public PessoaEndereco prepararForm(PessoaEndereco modelo, Principal usuario) throws Exception {
 		return modelo == null ? new PessoaEndereco() : modelo;
 	}
 

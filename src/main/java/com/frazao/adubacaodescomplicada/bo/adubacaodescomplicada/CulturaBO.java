@@ -1,5 +1,6 @@
 package com.frazao.adubacaodescomplicada.bo.adubacaodescomplicada;
 
+import java.security.Principal;
 import java.util.Collection;
 import java.util.Optional;
 
@@ -32,9 +33,9 @@ public class CulturaBO extends CRUDBO<Cultura, java.lang.Integer, CulturaFiltroD
 	private CulturaNecessidadeAduboFormacaoDAO culturaNecessidadeAduboFormacaoDAO;
 
 	@Override
-	public Collection<Cultura> filter(@Valid final CulturaFiltroDTO filtro) throws BOException {
+	public Collection<Cultura> filter(@Valid final CulturaFiltroDTO filtro, Principal usuario) throws BOException {
 		Optional<Collection<Cultura>> result = null;
-		result = Optional.ofNullable(super.filter(filtro));
+		result = Optional.ofNullable(super.filter(filtro, usuario));
 		result.ifPresent(lista -> {
 			lista.forEach(a -> {
 				Collection<CulturaNecessidadeAduboFormacao> list1 = culturaNecessidadeAduboFormacaoDAO

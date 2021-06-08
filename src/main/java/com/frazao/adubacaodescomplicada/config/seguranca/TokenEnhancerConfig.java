@@ -10,6 +10,7 @@ import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.security.oauth2.provider.token.TokenEnhancer;
 import org.springframework.stereotype.Component;
 
+import com.frazao.adubacaodescomplicada.bo.adubacaodescomplicada.PessoaBO;
 import com.frazao.adubacaodescomplicada.bo.adubacaodescomplicada.UsuarioBO;
 import com.frazao.adubacaodescomplicada.modelo.entidade.adubacaodescomplicada.Usuario;
 
@@ -18,6 +19,9 @@ public class TokenEnhancerConfig implements TokenEnhancer {
 
 	@Autowired
 	private UsuarioBO bo;
+	
+	@Autowired
+	private PessoaBO pessoaBo;
 
 	public TokenEnhancerConfig() {
 	}
@@ -45,6 +49,9 @@ public class TokenEnhancerConfig implements TokenEnhancer {
 			details.put("email", usuario.getEmail());
 			details.put("perfil", usuario.getPerfil());
 			tempResult.setAdditionalInformation(details);
+			
+			// iniciar tabela de preços do usuário
+			usuario.getPessoa().ifPresent(p -> pessoaBo.iniciaPrecoAdubo(p));
 		}
 
 		return tempResult;

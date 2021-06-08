@@ -1,5 +1,6 @@
 package com.frazao.adubacaodescomplicada.bo.adubacaodescomplicada;
 
+import java.security.Principal;
 import java.util.Collection;
 
 import javax.validation.Valid;
@@ -24,9 +25,9 @@ public class ReceitaReferenciaBO extends CRUDBO<ReceitaReferencia, java.lang.Int
 	private AduboGarantiaBO aduboGarantiaBO;
 
 	@Override
-	public Collection<ReceitaReferencia> filter(@Valid ReceitaReferenciaFiltroDTO filtro) throws BOException {
+	public Collection<ReceitaReferencia> filter(@Valid ReceitaReferenciaFiltroDTO filtro, Principal usuario) throws BOException {
 
-		Collection<ReceitaReferencia> result = super.filter(filtro);
+		Collection<ReceitaReferencia> result = super.filter(filtro, usuario);
 
 //		AduboGarantiaFiltroDTO aduboGarantiaFiltroDTO = new AduboGarantiaFiltroDTO();
 

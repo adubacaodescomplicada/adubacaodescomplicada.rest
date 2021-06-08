@@ -62,4 +62,12 @@ public class Adubo extends EntidadeBaseTemId<Integer> {
 		super(id);
 	}
 
+	public Adubo(Integer id, String codigo, String nome, String descricao, AduboTipo aduboTipo) {
+		super(id);
+		this.codigo = codigo;
+		this.nome = nome;
+		this.descricao = descricao;
+		this.aduboTipo = aduboTipo;
+	}
+
 }

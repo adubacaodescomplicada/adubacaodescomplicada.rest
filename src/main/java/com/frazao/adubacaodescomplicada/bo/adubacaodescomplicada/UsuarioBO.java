@@ -1,5 +1,6 @@
 package com.frazao.adubacaodescomplicada.bo.adubacaodescomplicada;
 
+import java.security.Principal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -117,8 +118,8 @@ public class UsuarioBO extends CRUDBO<Usuario, Integer, UsuarioFiltroDTO, Usuari
 	}
 
 	@Override
-	public Usuario prepararForm(@Valid final Usuario modelo) throws BOException {
-		final Usuario result = super.prepararForm(modelo);
+	public Usuario prepararForm(@Valid final Usuario modelo, Principal usuario) throws BOException {
+		final Usuario result = super.prepararForm(modelo, usuario);
 		result.setAtivo(Confirmacao.S);
 		result.setPerfil("");
 		return result;

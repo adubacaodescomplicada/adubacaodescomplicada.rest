@@ -1,5 +1,7 @@
 package com.frazao.adubacaodescomplicada.rest.adubacaodescomplicada;
 
+import java.security.Principal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,7 +21,7 @@ public class CulturaNecessidadeAduboFormacaoCRUDREST extends
 	}
 
 	@Override
-	public CulturaNecessidadeAduboFormacao prepararForm(CulturaNecessidadeAduboFormacao modelo) throws Exception {
+	public CulturaNecessidadeAduboFormacao prepararForm(CulturaNecessidadeAduboFormacao modelo, Principal usuario) throws Exception {
 		return modelo == null ? new CulturaNecessidadeAduboFormacao() : modelo;
 	}
 

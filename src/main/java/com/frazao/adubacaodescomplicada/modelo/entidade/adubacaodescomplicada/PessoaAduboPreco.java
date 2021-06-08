@@ -1,5 +1,8 @@
 package com.frazao.adubacaodescomplicada.modelo.entidade.adubacaodescomplicada;
 
+import java.math.BigDecimal;
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -9,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import com.frazao.adubacaodescomplicada.modelo.entidade.EntidadeBaseTemId;
 
@@ -16,19 +21,22 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-@Entity(name = "PessoaEndereco")
-@Table(name = "pessoa_endereco")
+@Entity(name = "PessoaAduboPreco")
+@Table(name = "pessoa_adubo_preco")
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-
-public class PessoaEndereco extends EntidadeBaseTemId<Integer> {
+public class PessoaAduboPreco extends EntidadeBaseTemId<Integer> {
 
 	private static final long serialVersionUID = 1L;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "endereco_id")
-	private Endereco enderecoId;
+	@JoinColumn(name = "adubo_id")
+	private Adubo adubo;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "data")
+	private Date data;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -37,9 +45,16 @@ public class PessoaEndereco extends EntidadeBaseTemId<Integer> {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "pessoa_id")
-	private Pessoa pessoaId;
+	private Pessoa pessoa;
 
-	public PessoaEndereco(Integer id) {
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "unidade_medida_id")
+	private UnidadeMedida unidadeMedida;
+
+	@Column(name = "valor")
+	private BigDecimal valor;
+
+	public PessoaAduboPreco(Integer id) {
 		super(id);
 	}
 

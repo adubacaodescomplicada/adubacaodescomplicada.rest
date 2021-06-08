@@ -8,4 +8,6 @@ import com.frazao.adubacaodescomplicada.modelo.entidade.adubacaodescomplicada.Pe
 @Repository
 public interface PessoaDAO extends JpaRepository<Pessoa, java.lang.Integer>, PessoaDAOFiltro {
 
+	void iniciaPrecoAdubo(Pessoa pessoa);
+
 }

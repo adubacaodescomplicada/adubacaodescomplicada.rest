@@ -2,6 +2,7 @@ package com.frazao.adubacaodescomplicada.bo;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -40,7 +41,7 @@ public abstract class CRUDBO<E extends EntidadeBaseTemId<Id>, Id, F extends Filt
 
 	@Override
 	@Transactional
-	public Id create(@Valid final E t) throws BOException {
+	public Id create(@Valid final E t, Principal usuario) throws BOException {
 		try {
 			if (CRUDBO.log.isDebugEnabled()) {
 				CRUDBO.log.debug("Criando ({})..", t);
@@ -60,19 +61,19 @@ public abstract class CRUDBO<E extends EntidadeBaseTemId<Id>, Id, F extends Filt
 
 	}
 
-	public void delete(final Collection<Id> ids) throws BOException {
+	public void delete(final Collection<Id> ids, Principal usuario) throws BOException {
 		for (final Id id : ids) {
-			this.delete(id);
+			this.delete(id, usuario);
 		}
 	}
 
-	public void delete(final E e) throws BOException {
-		this.delete(e.getId());
+	public void delete(final E e, Principal usuario) throws BOException {
+		this.delete(e.getId(), usuario);
 	}
 
 	@Override
 	@Transactional
-	public void delete(final Id id) throws BOException {
+	public void delete(final Id id, Principal usuario) throws BOException {
 		try {
 			final E anterior = this.getDAO().getOne(id);
 			if (CRUDBO.log.isTraceEnabled()) {
@@ -96,8 +97,8 @@ public abstract class CRUDBO<E extends EntidadeBaseTemId<Id>, Id, F extends Filt
 		}
 	}
 
-	public void delete(final Id[] ids) throws BOException {
-		this.delete(Arrays.asList(ids));
+	public void delete(final Id[] ids, Principal usuario) throws BOException {
+		this.delete(Arrays.asList(ids), usuario);
 	}
 
 	public E entrando(@Valid final E t, @Valid final E anterior, final String acao) throws BOException {
@@ -128,7 +129,7 @@ public abstract class CRUDBO<E extends EntidadeBaseTemId<Id>, Id, F extends Filt
 
 	@Override
 	@SuppressWarnings("unchecked")
-	public Collection<E> filter(@Valid final F filtro) throws BOException {
+	public Collection<E> filter(@Valid final F filtro, Principal usuario) throws BOException {
 		try {
 			if (CRUDBO.log.isDebugEnabled()) {
 				CRUDBO.log.debug("Filtrando ({})..", filtro);
@@ -186,7 +187,7 @@ public abstract class CRUDBO<E extends EntidadeBaseTemId<Id>, Id, F extends Filt
 	}
 
 	@Override
-	public E prepararForm(@Valid final E modelo) throws BOException {
+	public E prepararForm(@Valid final E modelo, Principal usuario) throws BOException {
 		try {
 			if (CRUDBO.log.isDebugEnabled()) {
 				CRUDBO.log.debug("Preparando novo ({})..", modelo);
@@ -204,7 +205,7 @@ public abstract class CRUDBO<E extends EntidadeBaseTemId<Id>, Id, F extends Filt
 	}
 
 	@Override
-	public E restore(final Id id) throws BOException {
+	public E restore(final Id id, Principal usuario) throws BOException {
 		try {
 			if (CRUDBO.log.isDebugEnabled()) {
 				CRUDBO.log.debug("Recuperando ({})..", id);
@@ -246,7 +247,7 @@ public abstract class CRUDBO<E extends EntidadeBaseTemId<Id>, Id, F extends Filt
 
 	@Override
 	@Transactional
-	public E update(final Id id, @Valid final E t) throws BOException {
+	public E update(final Id id, @Valid final E t, Principal usuario) throws BOException {
 		try {
 			if (CRUDBO.log.isDebugEnabled()) {
 				CRUDBO.log.debug("Atualizando ({})..", id);

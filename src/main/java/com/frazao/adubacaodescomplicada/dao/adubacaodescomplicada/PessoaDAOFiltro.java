@@ -6,4 +6,6 @@ import com.frazao.adubacaodescomplicada.modelo.entidade.adubacaodescomplicada.Pe
 
 public interface PessoaDAOFiltro extends Filtro<Pessoa, PessoaFiltroDTO> {
 
+	void iniciaPrecoAdubo(Pessoa pessoa);
+
 }

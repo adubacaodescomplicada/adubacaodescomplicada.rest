@@ -1,5 +1,6 @@
 package com.frazao.adubacaodescomplicada.rest;
 
+import java.security.Principal;
 import java.util.Collection;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -24,19 +25,19 @@ public abstract class CRUDREST<E extends EntidadeBaseTemId<Id>, Id, F extends Fi
 	}
 
 	@PostMapping
-	public Id create(@RequestBody final E t) throws Exception {
-		final Id result = this.getBO().create(t);
+	public Id create(@RequestBody final E t, Principal usuario) throws Exception {
+		final Id result = this.getBO().create(t, usuario);
 		return result;
 	}
 
 	@DeleteMapping("{id}")
-	public void delete(@PathVariable("id") final Id id) throws Exception {
-		this.getBO().delete(id);
+	public void delete(@PathVariable("id") final Id id, Principal usuario) throws Exception {
+		this.getBO().delete(id, usuario);
 	}
 
 	@GetMapping
-	public Collection<E> filter(final F filtro) throws Exception {
-		final Collection<E> result = this.getBO().filter(filtro);
+	public Collection<E> filter(final F filtro, Principal usuario) throws Exception {
+		final Collection<E> result = this.getBO().filter(filtro, usuario);
 		return result;
 	}
 
@@ -46,20 +47,20 @@ public abstract class CRUDREST<E extends EntidadeBaseTemId<Id>, Id, F extends Fi
 	}
 
 	@PostMapping("preparar-form")
-	public E prepararForm(@RequestBody(required = false) final E modelo) throws Exception {
-		final E result = this.getBO().prepararForm(modelo);
+	public E prepararForm(@RequestBody(required = false) final E modelo, Principal usuario) throws Exception {
+		final E result = this.getBO().prepararForm(modelo, usuario);
 		return result;
 	}
 
 	@GetMapping("{id}")
-	public E restore(@PathVariable("id") final Id id) throws Exception {
-		final E result = this.getBO().restore(id);
+	public E restore(@PathVariable("id") final Id id, Principal usuario) throws Exception {
+		final E result = this.getBO().restore(id, usuario);
 		return result;
 	}
 
 	@PutMapping("{id}")
-	public void update(@PathVariable("id") final Id id, @RequestBody final E t) throws Exception {
-		this.getBO().update(id, t);
+	public void update(@PathVariable("id") final Id id, @RequestBody final E t, Principal usuario) throws Exception {
+		this.getBO().update(id, t, usuario);
 	}
 
 }

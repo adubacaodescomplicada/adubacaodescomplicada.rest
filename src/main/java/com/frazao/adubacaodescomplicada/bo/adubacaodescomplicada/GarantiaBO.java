@@ -1,5 +1,6 @@
 package com.frazao.adubacaodescomplicada.bo.adubacaodescomplicada;
 
+import java.security.Principal;
 import java.util.Collection;
 import java.util.List;
 
@@ -27,16 +28,16 @@ public class GarantiaBO extends CRUDBO<Garantia, java.lang.Integer, GarantiaFilt
 	private AduboGarantiaBO aduboGarantiaBO;
 
 	@Override
-	public Collection<Garantia> filter(@Valid GarantiaFiltroDTO filtro) throws BOException {
+	public Collection<Garantia> filter(@Valid GarantiaFiltroDTO filtro, Principal usuario) throws BOException {
 
-		Collection<Garantia> result = super.filter(filtro);
+		Collection<Garantia> result = super.filter(filtro, usuario);
 
 		AduboGarantiaFiltroDTO aduboGarantiaFiltroDTO = new AduboGarantiaFiltroDTO();
 
 		for (Garantia item : result) {
 			aduboGarantiaFiltroDTO.setGarantia(item);
 			List<AduboGarantia> aduboGarantiaList = (List<AduboGarantia>) aduboGarantiaBO
-					.filter(aduboGarantiaFiltroDTO);
+					.filter(aduboGarantiaFiltroDTO, usuario);
 			aduboGarantiaList.forEach(r -> {
 				r.setGarantia(null);
 				r.getAdubo().setAduboGarantiaList(null);

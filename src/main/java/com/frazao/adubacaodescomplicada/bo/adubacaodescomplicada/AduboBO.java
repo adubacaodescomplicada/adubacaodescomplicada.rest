@@ -1,5 +1,6 @@
 package com.frazao.adubacaodescomplicada.bo.adubacaodescomplicada;
 
+import java.security.Principal;
 import java.util.Collection;
 import java.util.Date;
 import java.util.Optional;
@@ -28,9 +29,9 @@ public class AduboBO extends CRUDBO<Adubo, java.lang.Integer, AduboFiltroDTO, Ad
 	private AduboPrecoDAO aduboPrecoDAO;
 
 	@Override
-	public Collection<Adubo> filter(@Valid final AduboFiltroDTO filtro) throws BOException {
+	public Collection<Adubo> filter(@Valid final AduboFiltroDTO filtro, Principal usuario) throws BOException {
 		Optional<Collection<Adubo>> result = null;
-		result = Optional.ofNullable(super.filter(filtro));
+		result = Optional.ofNullable(super.filter(filtro, usuario));
 		result.ifPresent(lista -> {
 			lista.forEach(a -> {
 				Collection<AduboPreco> aduboPrecoList = aduboPrecoDAO.findTop1ByAduboAndDataBeforeOrderByDataDesc(a,
