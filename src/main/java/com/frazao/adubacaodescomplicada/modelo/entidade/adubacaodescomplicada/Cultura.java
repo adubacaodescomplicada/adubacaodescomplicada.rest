@@ -1,7 +1,11 @@
 package com.frazao.adubacaodescomplicada.modelo.entidade.adubacaodescomplicada;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -26,7 +30,6 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-
 public class Cultura extends EntidadeBaseTemId<Integer> {
 
 	private static final long serialVersionUID = 1L;
@@ -54,51 +57,64 @@ public class Cultura extends EntidadeBaseTemId<Integer> {
 	@Transient
 	private List<CulturaNecessidadeAduboFormacao> culturaNecessidadeAduboFormacaoList = new ArrayList<>();
 
-	@Transient 
+	@Transient
 	private List<CulturaNecessidadeAduboProducao> culturaNecessidadeAduboProducaoList = new ArrayList<>();
 
 	@Column(name = "epoca")
 	private String epoca;
-	
-	@Column(name= "espacamento_duplo")
+
+	@Column(name = "espacamento_duplo")
 	@Enumerated(EnumType.STRING)
 	private Confirmacao espacamentoDuplo;
-	
+
 	@Column(name = "formacao")
 	@Enumerated(EnumType.STRING)
 	private Confirmacao formacao;
-	
+
+	@Column(name = "forma_plantio")
+	private String formaPlantio;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
 	private Integer id;
-	
+
 	@Column(name = "meta_saturacao_base")
-    private Integer metaSaturacaoBase;
-	
+	private Integer metaSaturacaoBase;
+
 	@Column(name = "nome")
 	private String nome;
-	
+
 	@Column(name = "numero_folha")
 	private String numeroFolha;
-	
+
 	@Column(name = "observacao_coleta")
 	private String observacaoColeta;
-	
+
 	@Column(name = "producao")
 	@Enumerated(EnumType.STRING)
 	private Confirmacao producao;
-	
+
 	@Column(name = "recomendacao")
 	private String recomendacao;
-	
+
 	@Column(name = "tipo_folha")
 	private String tipoFolha;
-	
+
 	@Column(name = "unidade_produtividade")
-    private String unidadeProdutividade;
+	private String unidadeProdutividade;
 
 	public Cultura(Integer id) {
 		super(id);
+	}
+
+	@SuppressWarnings("unchecked")
+	public Set<String> getFormaPlantio() {
+		return this.formaPlantio == null ? Collections.EMPTY_SET
+				: Collections.unmodifiableSet(new HashSet<String>(Arrays.asList(this.formaPlantio.split(","))));
+	}
+	
+	public void setFormaPlantio(Set<String> formaPlantio) {
+		 this.formaPlantio = String.join(",", formaPlantio);
 	}
 }
