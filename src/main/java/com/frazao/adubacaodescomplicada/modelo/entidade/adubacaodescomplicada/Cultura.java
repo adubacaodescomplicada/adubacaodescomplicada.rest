@@ -50,6 +50,10 @@ public class Cultura extends EntidadeBaseTemId<Integer> {
 	@Column(name = "cultivo_fora_solo")
 	@Enumerated(EnumType.STRING)
 	private Confirmacao cultivoForaSolo;
+	
+	@Column(name = "cultivo_hidroponico")
+	@Enumerated(EnumType.STRING)
+	private Confirmacao cultivoHidroponico;
 
 	@OneToMany(mappedBy = "cultura")
 	private List<CulturaIdadePlantio> culturaIdadePlantioList = new ArrayList<>();
