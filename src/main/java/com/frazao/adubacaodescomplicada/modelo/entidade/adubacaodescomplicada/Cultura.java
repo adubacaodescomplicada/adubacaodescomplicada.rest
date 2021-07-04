@@ -120,4 +120,5 @@ public class Cultura extends EntidadeBaseTemId<Integer> {
 	public void setFormaPlantio(Set<String> formaPlantio) {
 		 this.formaPlantio = String.join(",", formaPlantio);
 	}
+
 }

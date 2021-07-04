@@ -1,5 +1,11 @@
 package com.frazao.adubacaodescomplicada.modelo.entidade.adubacaodescomplicada;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -7,9 +13,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.frazao.adubacaodescomplicada.modelo.dominio.Confirmacao;
@@ -54,12 +58,25 @@ public class AnaliseSoloParametro extends EntidadeBaseTemId<Integer> {
 	@Enumerated(EnumType.STRING)
 	private Confirmacao temFormulaQualidadeSolo;
 
-	@JoinColumn(name = "unidade_medida_id")
-	@ManyToOne
-	private UnidadeMedida unidadeMedida;
+	@Column(name = "unidade_medida_lista")
+	private String unidadeMedidaLista;
 
 	public AnaliseSoloParametro(Integer id) {
 		super(id);
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Integer> getUnidadeMedidaLista() {
+		return this.unidadeMedidaLista == null ? Collections.EMPTY_LIST
+				: Collections.unmodifiableList(new ArrayList<Integer>(Arrays.asList(this.unidadeMedidaLista.split(","))
+						.stream().map(e -> new Integer(e)).collect(Collectors.toList())));
+	}
+
+	public void setUnidadeMedidaLista(List<Integer> unidadeMedidaLista) {
+		this.unidadeMedidaLista = unidadeMedidaLista == null ? null
+				: String.join(",",
+						unidadeMedidaLista.stream().map(e -> Integer.toString(e)).collect(Collectors.toList()))
+						.replaceAll(" ", "");
 	}
 
 }
