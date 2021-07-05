@@ -1,5 +1,6 @@
 package com.frazao.adubacaodescomplicada.modelo.entidade.adubacaodescomplicada;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -57,6 +58,9 @@ public class Adubo extends EntidadeBaseTemId<Integer> {
 
 	@Column(name = "nome")
 	private String nome;
+
+	@Column(name = "quantidade_quilo_cova")
+	private BigDecimal quantidadeQuiloCova;
 
 	public Adubo(Integer id) {
 		super(id);
