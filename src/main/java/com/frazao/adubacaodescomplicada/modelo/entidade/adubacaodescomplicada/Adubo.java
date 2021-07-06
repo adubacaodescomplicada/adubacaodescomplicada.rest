@@ -6,6 +6,8 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,6 +19,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.frazao.adubacaodescomplicada.modelo.dominio.Confirmacao;
 import com.frazao.adubacaodescomplicada.modelo.entidade.EntidadeBaseTemId;
 
 import lombok.Data;
@@ -61,6 +64,14 @@ public class Adubo extends EntidadeBaseTemId<Integer> {
 
 	@Column(name = "quantidade_quilo_cova")
 	private BigDecimal quantidadeQuiloCova;
+	
+	@Column(name="para_cobertura")
+	@Enumerated(EnumType.STRING)
+	private Confirmacao paraCobertura;
+	
+	@Column(name="para_fertirrigacao")
+	@Enumerated(EnumType.STRING)
+	private Confirmacao paraFertirrigacao;
 
 	public Adubo(Integer id) {
 		super(id);
