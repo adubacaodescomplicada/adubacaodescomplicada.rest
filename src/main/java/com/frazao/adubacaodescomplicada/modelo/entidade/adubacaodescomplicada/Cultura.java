@@ -57,7 +57,10 @@ public class Cultura extends EntidadeBaseTemId<Integer> {
 
 	@OneToMany(mappedBy = "cultura")
 	private List<CulturaIdadePlantio> culturaIdadePlantioList = new ArrayList<>();
-
+	
+	@OneToMany(mappedBy = "cultura")
+	private List<CulturaFormaParcelamento> culturaFormaParcelamentoList = new ArrayList<>();
+	
 	@Transient
 	private List<CulturaNecessidadeAduboFormacao> culturaNecessidadeAduboFormacaoList = new ArrayList<>();
 
