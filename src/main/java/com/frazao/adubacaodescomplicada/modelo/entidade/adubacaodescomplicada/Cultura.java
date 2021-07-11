@@ -14,6 +14,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -37,8 +39,9 @@ public class Cultura extends EntidadeBaseTemId<Integer> {
 	@Column(name = "armazanamento_envio")
 	private String armazanamentoEnvio;
 
-	@Column(name = "classificacao")
-	private String classificacao;
+	@ManyToOne
+	@JoinColumn(name = "cultura_tipo_id")
+	private CulturaTipo culturaTipo;
 
 	@Column(name = "codigo")
 	private String codigo;
