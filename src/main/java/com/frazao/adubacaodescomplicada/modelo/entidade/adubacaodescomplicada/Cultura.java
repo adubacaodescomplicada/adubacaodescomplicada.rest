@@ -50,9 +50,9 @@ public class Cultura extends EntidadeBaseTemId<Integer> {
 	@Enumerated(EnumType.STRING)
 	private Confirmacao cultivoEmSolo;
 
-	@Column(name = "cultivo_fora_solo")
+	@Column(name = "manutencao")
 	@Enumerated(EnumType.STRING)
-	private Confirmacao cultivoForaSolo;
+	private Confirmacao manutencao;
 	
 	@Column(name = "cultivo_hidroponico")
 	@Enumerated(EnumType.STRING)
