@@ -10,28 +10,30 @@ import org.springframework.stereotype.Service;
 
 import com.frazao.adubacaodescomplicada.bo.BOException;
 import com.frazao.adubacaodescomplicada.bo.CRUDBO;
-import com.frazao.adubacaodescomplicada.dao.adubacaodescomplicada.ReceitaReferenciaDAO;
-import com.frazao.adubacaodescomplicada.modelo.dto.adubacaodescomplicada.ReceitaReferenciaFiltroDTO;
-import com.frazao.adubacaodescomplicada.modelo.entidade.adubacaodescomplicada.ReceitaReferencia;
+import com.frazao.adubacaodescomplicada.dao.adubacaodescomplicada.ReferenciaBibliograficaDAO;
+import com.frazao.adubacaodescomplicada.modelo.dto.adubacaodescomplicada.ReferenciaBibliograficaFiltroDTO;
+import com.frazao.adubacaodescomplicada.modelo.entidade.adubacaodescomplicada.ReferenciaBibliografica;
 
 @Service
-public class ReceitaReferenciaBO extends CRUDBO<ReceitaReferencia, java.lang.Integer, ReceitaReferenciaFiltroDTO, ReceitaReferenciaDAO> {
+public class ReferenciaBibliograficaBO extends
+		CRUDBO<ReferenciaBibliografica, java.lang.Integer, ReferenciaBibliograficaFiltroDTO, ReferenciaBibliograficaDAO> {
 
-	public ReceitaReferenciaBO(@Autowired ReceitaReferenciaDAO dao) {
-		super(ReceitaReferencia.class, dao);
+	public ReferenciaBibliograficaBO(@Autowired ReferenciaBibliograficaDAO dao) {
+		super(ReferenciaBibliografica.class, dao);
 	}
 
 	@Autowired
 	private AduboGarantiaBO aduboGarantiaBO;
 
 	@Override
-	public Collection<ReceitaReferencia> filter(@Valid ReceitaReferenciaFiltroDTO filtro, Principal usuario) throws BOException {
+	public Collection<ReferenciaBibliografica> filter(@Valid ReferenciaBibliograficaFiltroDTO filtro, Principal usuario)
+			throws BOException {
 
-		Collection<ReceitaReferencia> result = super.filter(filtro, usuario);
+		Collection<ReferenciaBibliografica> result = super.filter(filtro, usuario);
 
 //		AduboGarantiaFiltroDTO aduboGarantiaFiltroDTO = new AduboGarantiaFiltroDTO();
 
-		for (ReceitaReferencia item : result) {
+		for (ReferenciaBibliografica item : result) {
 //			aduboGarantiaFiltroDTO.setGarantia(item);
 //			List<AduboGarantia> aduboGarantiaList = (List<AduboGarantia>) aduboGarantiaBO
 //					.filter(aduboGarantiaFiltroDTO);

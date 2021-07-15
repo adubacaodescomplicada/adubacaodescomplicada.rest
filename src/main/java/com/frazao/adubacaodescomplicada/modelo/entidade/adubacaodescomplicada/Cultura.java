@@ -50,10 +50,6 @@ public class Cultura extends EntidadeBaseTemId<Integer> {
 	@Enumerated(EnumType.STRING)
 	private Confirmacao cultivoEmSolo;
 
-	@Column(name = "manutencao")
-	@Enumerated(EnumType.STRING)
-	private Confirmacao manutencao;
-	
 	@Column(name = "cultivo_hidroponico")
 	@Enumerated(EnumType.STRING)
 	private Confirmacao cultivoHidroponico;
@@ -63,7 +59,10 @@ public class Cultura extends EntidadeBaseTemId<Integer> {
 	
 	@OneToMany(mappedBy = "cultura")
 	private List<CulturaFormaParcelamento> culturaFormaParcelamentoList = new ArrayList<>();
-	
+
+	@OneToMany(mappedBy = "cultura")
+	private List<ReferenciaBibliograficaCultura> referenciaBibliograficaCulturaList = new ArrayList<>();
+
 	@Transient
 	private List<CulturaNecessidadeAduboFormacao> culturaNecessidadeAduboFormacaoList = new ArrayList<>();
 
@@ -76,10 +75,6 @@ public class Cultura extends EntidadeBaseTemId<Integer> {
 	@Column(name = "espacamento_quantidade")
 	private Integer espacamentoQuantidade;
 
-	@Column(name = "formacao")
-	@Enumerated(EnumType.STRING)
-	private Confirmacao formacao;
-
 	@Column(name = "forma_plantio")
 	private String formaPlantio;
 
@@ -87,9 +82,6 @@ public class Cultura extends EntidadeBaseTemId<Integer> {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
 	private Integer id;
-
-	@Column(name = "meta_saturacao_base")
-	private Integer metaSaturacaoBase;
 
 	@Column(name = "nome")
 	private String nome;
@@ -99,10 +91,6 @@ public class Cultura extends EntidadeBaseTemId<Integer> {
 
 	@Column(name = "observacao_coleta")
 	private String observacaoColeta;
-
-	@Column(name = "producao")
-	@Enumerated(EnumType.STRING)
-	private Confirmacao producao;
 
 	@Column(name = "recomendacao")
 	private String recomendacao;

@@ -1,24 +1,18 @@
 package com.frazao.adubacaodescomplicada.modelo.entidade.adubacaodescomplicada;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
-import com.frazao.adubacaodescomplicada.modelo.dominio.Confirmacao;
+import com.frazao.adubacaodescomplicada.modelo.dominio.IdadeFaseCultivo;
 import com.frazao.adubacaodescomplicada.modelo.entidade.EntidadeBaseTemId;
 
 import lombok.Data;
@@ -42,12 +36,26 @@ public class CulturaTipo extends EntidadeBaseTemId<Integer> {
 	@Column(name = "id")
 	private Integer id;
 
+	@Column(name = "idade_fase_cultivo")
+	private String idadeFaseCultivo;
+
 	@Column(name = "nome")
 	private String nome;
 
-
 	public CulturaTipo(Integer id) {
 		super(id);
+	}
+
+	@SuppressWarnings("unchecked")
+	public Set<IdadeFaseCultivo> getIdadeFaseCultivo() {
+		return this.idadeFaseCultivo == null ? Collections.EMPTY_SET
+				: Collections.unmodifiableSet(Arrays.asList(IdadeFaseCultivo.values()).stream()
+						.filter(r -> this.idadeFaseCultivo.indexOf(r.name()) >= 0).collect(Collectors.toSet()));
+	}
+
+	public void setIdadeFaseCultivo(Set<IdadeFaseCultivo> idadeFaseCultivo) {
+		this.idadeFaseCultivo = String.join(",",
+				idadeFaseCultivo.stream().map(r -> r.name()).collect(Collectors.toSet()));
 	}
 
 }

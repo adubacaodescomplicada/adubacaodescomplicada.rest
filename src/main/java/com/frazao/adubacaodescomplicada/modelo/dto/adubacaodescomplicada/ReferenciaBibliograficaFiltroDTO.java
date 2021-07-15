@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @EqualsAndHashCode
 
-public class ReceitaReferenciaFiltroDTO implements FiltroDTO {
+public class ReferenciaBibliograficaFiltroDTO implements FiltroDTO {
 
 	private static final long serialVersionUID = 1L;
 
